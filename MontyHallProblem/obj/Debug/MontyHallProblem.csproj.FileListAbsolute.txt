@@ -1,0 +1,8 @@
+C:\Users\carlos.simim\Desktop\MontyHallProblem\MontyHallProblem\bin\Debug\MontyHallProblem.exe.config
+C:\Users\carlos.simim\Desktop\MontyHallProblem\MontyHallProblem\bin\Debug\MontyHallProblem.exe
+C:\Users\carlos.simim\Desktop\MontyHallProblem\MontyHallProblem\bin\Debug\MontyHallProblem.pdb
+C:\Users\carlos.simim\Desktop\MontyHallProblem\MontyHallProblem\obj\Debug\MontyHallProblem.csproj.AssemblyReference.cache
+C:\Users\carlos.simim\Desktop\MontyHallProblem\MontyHallProblem\obj\Debug\MontyHallProblem.csproj.SuggestedBindingRedirects.cache
+C:\Users\carlos.simim\Desktop\MontyHallProblem\MontyHallProblem\obj\Debug\MontyHallProblem.csproj.CoreCompileInputs.cache
+C:\Users\carlos.simim\Desktop\MontyHallProblem\MontyHallProblem\obj\Debug\MontyHallProblem.exe
+C:\Users\carlos.simim\Desktop\MontyHallProblem\MontyHallProblem\obj\Debug\MontyHallProblem.pdb
