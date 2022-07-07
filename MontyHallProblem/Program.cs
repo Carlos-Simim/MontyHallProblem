@@ -30,23 +30,23 @@ namespace MontyHallProblem
                 p3.numero = 3;
                 escolha = p1;
                 sortearporta = r.Next(1, 3); //Acho que ta com problema aqui
-                switch (sortearporta)
+                if(sortearporta == 1)
                 {
-                    case 1:
-                        p1.carro = true;
-                        p1.cabra = false;
-                        break;
-
-                    case 2:
-                        p2.carro = true;
-                        p2.cabra = false;
-                        break;
-
-                    case 3:
-                        p3.carro = true;
-                        p3.cabra = false;
-                        break;
+                    p1.carro = true;
+                    p1.cabra = false;
                 }
+                if(sortearporta == 2)
+                {
+                    p2.carro = true;
+                    p2.cabra = false;
+                }
+                if(sortearporta == 3)
+                {
+                    p3.carro = true;
+                    p3.cabra = false;
+                }
+                
+
 
                 if (escolha == p1)
                 {
