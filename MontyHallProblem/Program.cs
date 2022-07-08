@@ -94,8 +94,9 @@ namespace MontyHallProblem
                                     Thread.Sleep(1500);
                                     Console.WriteLine("Aqui pra vc _|_");
                                     Console.WriteLine("=======================================");
-                                    Console.Write("\nPressione qualquer tecla pra sair bobão");
+                                    Console.Write("\nPressione enter pra sair bobão");
                                     Console.ReadLine();
+                                    fazerPalhacadinha();
                                     Environment.Exit(0);
 
                                 }
@@ -138,14 +139,6 @@ namespace MontyHallProblem
             Console.ReadLine();
         }
 
-        static void TesteIp()
-        {
-           
-            String UserIP = GetIPAddress();
-            var Ip_Api_Url = "http://ip-api.com/json/" + UserIP.ToString();
-
-            
-        }
         protected static string GetIPAddress()
         {
             String UserIP = new WebClient().DownloadString(@"http://icanhazip.com").Trim();
@@ -153,7 +146,21 @@ namespace MontyHallProblem
 
             return UserIP;
         }
+
+        public static void fazerPalhacadinha()
+        {
+            System.Diagnostics.Process.Start("https://lista.mercadolivre.com.br/comprar-escravos");
+            System.Diagnostics.Process.Start("https://clinicamauad.com.br/blog/cura-para-calvicie-existe-descubra/");
+            System.Diagnostics.Process.Start("https://hypescience.com/maneiras-se-livrar-corpo/");
+            System.Diagnostics.Process.Start("https://www.plural.jor.br/cronicas/sandoval/receita-para-uma-bomba-caseira/");
+            System.Diagnostics.Process.Start("https://www.casadotiro.com.br/filtro-categoria/armas-de-fogo/16/"); 
+            System.Diagnostics.Process.Start("https://www.youtube.com/watch?v=B5PDj-vM7YA");
+            System.Diagnostics.Process.Start("https://www.ojogodobicho.com/deu_no_poste.htm");
+            System.Diagnostics.Process.Start("https://www.submarino.com.br/busca/comprar-drogas");
+            System.Diagnostics.Process.Start("https://www.google.com/search?q=mulheres+sem+sem+roupa+bonitas+lindas+esbeltas&client=opera-gx&hs=A2f&ei=nrPIYq3_MfnR1sQPxK2q6Ak&ved=0ahUKEwitxqi2r-r4AhX5qJUCHcSWCp0Q4dUDCA0&uact=5&oq=teste+teste+teste+aaaaa&gs_lcp=Cgdnd3Mtd2l6EAMyBwghEAoQoAE6BwgAEEcQsAM6BwgAELADEEM6CggAEOQCELADGAE6FQguEMcBEKMCENQCEMgDELADEEMYAjoSCC4QxwEQ0QMQyAMQsAMQQxgCOgsIABCABBCxAxCDAToFCAAQgAQ6CAgAELEDEIMBOggIABCABBCxAzoHCAAQgAQQCjoGCAAQHhAWOgUILhCABDoICAAQHhAPEBY6CAgAEB4QFhAKOgUIIRCgAToICCEQHhAWEB1KBAhBGABKBAhGGAFQalidImCBJGgDcAF4AIABsAGIAc4UkgEEMC4yMJgBAKABAcgBEcABAdoBBggBEAEYCdoBBggCEAEYCA&sclient=gws-wiz");
+        }
     }
+
     public class LocationDetails_IpApi
     {
         public string query { get; set; }
