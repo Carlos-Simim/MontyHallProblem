@@ -127,6 +127,59 @@ namespace MontyHallProblem
             return toreturn;
         }
 
+        public static int coletarImput()
+        {
+            bool erro = true;
+            int quantidade = 0;
+            int contadorErros = 7;
+            
+            String imput = Console.ReadLine();
+
+            while (erro == true)
+            {
+                erro = false;
+                try
+                {
+                    quantidade = Int32.Parse(imput);
+                }
+                catch (System.FormatException)
+                {
+                    Console.Write("\nErro no input do usuário!");
+                    if (contadorErros <= 10)
+                    {
+                        Console.Write("\nPor favor, responda apenas com números inteiros. \n");
+                    }
+                    if (contadorErros > 10)
+                    {
+                        Console.Write("\nPelo amor de deus, siga as instruções :(((. Exemplo de números inteiros: 1, 2, 3, 4... \n");
+                    }
+                    Console.Write("Informe a quantidade desejada de simulações: ");
+                    imput = Console.ReadLine();
+                    erro = true;
+                    contadorErros++;
+                }
+                catch (System.OverflowException)
+                {
+                    Console.Write("\nInput do usuário é muito grande!");
+                    if (contadorErros <= 10)
+                    {
+                        Console.Write("\nPor favor, insira um número menor. \n");
+                    }
+                    if (contadorErros > 10)
+                    {
+                        Console.Write("\nPelo amor de deus, siga as instruções :(((. Exemplo de números não muito grandes: 100, 2000, 3000, 4000... \n");
+                    }
+                    Console.Write("Informe a quantidade desejada de simulações: ");
+                    imput = Console.ReadLine();
+                    erro = true;
+                    contadorErros++;
+                }
+
+                
+            }
+            return quantidade;
+        }
+
      
 
     }

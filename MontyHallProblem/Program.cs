@@ -12,61 +12,79 @@ namespace MontyHallProblem
     {
         static void Main(string[] args)
         {
-            double vitorias = 0;
-            double derrotas = 0;
-            double winrate;
-            double loserate;
-            Stopwatch stopwatch = new Stopwatch();
-            Random r = new Random();
-            bool sortear;
-            Console.Write("Informe a quantidade desejada de simulações: ");
-            int quantidade;
-            String imput = Console.ReadLine();
+            int escolhaPrincipal;
+            bool continuar = true;
+            String input;
+            int contagemErros = 0;
 
-            quantidade = Int32.Parse(imput);
-
-            stopwatch.Start();
-
-            Console.Write("\nRealizando simulações... ");
-            
-                for (int i = 0; i < quantidade; i++)
+            while (continuar == true)
+            {
+                
+                
+                Console.WriteLine("==========MENU==========");
+                Console.WriteLine("|1 - Monty Hall Problem |");
+                Console.WriteLine("|2 - Coin Flip          |");
+                Console.WriteLine("|3 - Roulette           |");
+                Console.WriteLine("|4 - Sair               |");
+                Console.WriteLine("========================");
+                Console.Write("\nEscolha uma opção da lista acima: ");
+                input = Console.ReadLine();
+                
+                while(input != "1" && input != "2" && input != "3" && input != "4")
                 {
-
-                    sortear = Porta.Sortear(r);
-                    if (sortear == true)
+                    Console.Clear();
+                    Console.WriteLine("==========MENU==========");
+                    Console.WriteLine("|1 - Monty Hall Problem |");
+                    Console.WriteLine("|2 - Coin Flip          |");
+                    Console.WriteLine("|3 - Roulette           |");
+                    Console.WriteLine("|4 - Sair               |");
+                    Console.WriteLine("========================");
+                    if (contagemErros >= 3)
                     {
-                        vitorias = vitorias + 1;
+                        Console.WriteLine("Contagem de vidas: " + (10 - contagemErros));
                     }
-                    if (sortear == false)
+                    if((10-contagemErros) <= 4 && (10 - contagemErros) > 0)
                     {
-                        derrotas = derrotas + 1;
+                        Console.Write("\nEita, suas vidas estão acabando :OOO - Melhor responder do jeito certo!! ");
                     }
 
+                    if ((10 - contagemErros) > 0)
+                    {
+                        Console.Write("\nEscolha uma opção da lista acima (Responda apenas com 1, 2 3 ou 4 por favor): ");
+                    }
                     
+                    
+                    
+                    input = Console.ReadLine();
+                    contagemErros++;
                 }
-            
-            Console.WriteLine("Finalizado.");
-            Thread.Sleep(2000);
 
-            stopwatch.Stop();
+                escolhaPrincipal = Int32.Parse(input);
+                
 
-            winrate = Porta.getWinrate(vitorias, derrotas, true, quantidade);
-            loserate = Porta.getWinrate(vitorias, derrotas, false, quantidade);
-
-            Console.WriteLine("Vitórias: " + vitorias);
-            Console.WriteLine("Derrotas: " + derrotas);
-
-            Console.WriteLine("\nWinrate esperado no problema: 66.666%");
-            Console.WriteLine("Winrate obtido: " + winrate + "%");
-            
-            Console.WriteLine("\nLoserate esperado no problema: 33.333%");
-            Console.WriteLine("Loserate obtido: " + loserate + "%");
-
-            double tempoDecorrido = stopwatch.ElapsedMilliseconds / 1000;
-            Console.WriteLine("\nTempo de execução: " + tempoDecorrido + "." + stopwatch.ElapsedMilliseconds % 100 + "s");
-
+                if (escolhaPrincipal == 1)
+                {
+                    Console.Clear();
+                    MontyHall.MontyHallMain();
+                }
+                if (escolhaPrincipal == 2)
+                {
+                    Console.Clear();
+                    CoinFlip.CoinFlipMain();
+                }
+                if (escolhaPrincipal == 3)
+                {
+                    Console.Clear();
+                    Roulette.RouletteMain();
+                }
+                if (escolhaPrincipal == 4)
+                {
+                    continuar = false;
+                }
+            }
+            Console.WriteLine("\nPrograma finalizado! Obrigado por utilizá-lo ;)");
+            Console.Write("\nAperte qualquer tecla para fechar a janela!");
             Console.ReadLine();
-
         }
     }
 }
