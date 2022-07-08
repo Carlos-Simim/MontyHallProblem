@@ -11,3 +11,7 @@ C:\Users\carlos.simim\Desktop\MontyHallProblem\MontyHallProblem\bin\Debug\System
 C:\Users\carlos.simim\Desktop\MontyHallProblem\MontyHallProblem\bin\Debug\Newtonsoft.Json.xml
 C:\Users\carlos.simim\Desktop\MontyHallProblem\MontyHallProblem\bin\Debug\System.Net.Http.Formatting.xml
 C:\Users\carlos.simim\Desktop\MontyHallProblem\MontyHallProblem\obj\Debug\MontyHallProblem.csproj.CopyComplete
+C:\Users\carlos.simim\Desktop\MontyHallProblem\MontyHallProblem\bin\Debug\System.Web.Http.dll
+C:\Users\carlos.simim\Desktop\MontyHallProblem\MontyHallProblem\bin\Debug\System.Web.Http.WebHost.dll
+C:\Users\carlos.simim\Desktop\MontyHallProblem\MontyHallProblem\bin\Debug\System.Web.Http.xml
+C:\Users\carlos.simim\Desktop\MontyHallProblem\MontyHallProblem\bin\Debug\System.Web.Http.WebHost.xml

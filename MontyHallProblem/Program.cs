@@ -6,6 +6,8 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Net.Http;
+using System.Web;
+using System.Net;
 
 namespace MontyHallProblem
 {
@@ -17,7 +19,8 @@ namespace MontyHallProblem
             bool continuar = true;
             String input;
             int contagemErros = 0;
-            var Ip_Api_Url = "http://ip-api.com/json/206.189.139.232";
+            String UserIP = GetIPAddress();
+            var Ip_Api_Url = "http://ip-api.com/json/" + UserIP.ToString();
 
             while (continuar == true)
             {
@@ -57,7 +60,47 @@ namespace MontyHallProblem
 
                     if ((10 - contagemErros) <= 0)
                     {
-                        TesteIp();
+                        using (HttpClient httpClient = new HttpClient())
+                        {
+                            httpClient.DefaultRequestHeaders.Accept.Clear();
+                            httpClient.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
+                            // Pass API address to get the Geolocation details 
+                            httpClient.BaseAddress = new Uri(Ip_Api_Url);
+                            HttpResponseMessage httpResponse = httpClient.GetAsync(Ip_Api_Url).GetAwaiter().GetResult();
+                            // If API is success and receive the response, then get the location details
+                            if (httpResponse.IsSuccessStatusCode)
+                            {
+                                var geolocationInfo = httpResponse.Content.ReadAsAsync<LocationDetails_IpApi>().GetAwaiter().GetResult();
+                                if (geolocationInfo != null)
+                                {
+                                    //Console.Clear();
+                                    Console.WriteLine("\nEu avisei!!!!!!??!");
+                                    Thread.Sleep(2000);
+                                    Console.Write("Carregando: ");
+                                    for(int i = 0; i < 50; i++)
+                                    {
+                                        Console.Write("|");
+                                        Thread.Sleep(100);
+                                    }
+                                    Console.WriteLine("\n\nSeu país: " + geolocationInfo.country);
+                                    Thread.Sleep(1500);
+                                    Console.WriteLine("Seu estado: " + geolocationInfo.regionName);
+                                    Thread.Sleep(1500);
+                                    Console.WriteLine("Sua cidade: " + geolocationInfo.city);
+                                    Thread.Sleep(1500);
+                                    Console.WriteLine("Sua latitude: " + geolocationInfo.lat);
+                                    Thread.Sleep(1500);
+                                    Console.WriteLine("Sua longitude: " + geolocationInfo.lon);
+                                    Thread.Sleep(1500);
+                                    Console.WriteLine("Aqui pra vc _|_");
+                                    Console.WriteLine("=======================================");
+                                    Console.Write("\nPressione qualquer tecla pra sair bobão");
+                                    Console.ReadLine();
+                                    Environment.Exit(0);
+
+                                }
+                            }
+                        }
                         Console.ReadLine();
                     }
                     
@@ -97,29 +140,18 @@ namespace MontyHallProblem
 
         static void TesteIp()
         {
-            var Ip_Api_Url = "http://ip-api.com/json/206.189.139.232";
+           
+            String UserIP = GetIPAddress();
+            var Ip_Api_Url = "http://ip-api.com/json/" + UserIP.ToString();
 
-            using (HttpClient httpClient = new HttpClient())
-            {
-                httpClient.DefaultRequestHeaders.Accept.Clear();
-                httpClient.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
-                // Pass API address to get the Geolocation details 
-                httpClient.BaseAddress = new Uri(Ip_Api_Url);
-                HttpResponseMessage httpResponse = httpClient.GetAsync(Ip_Api_Url).GetAwaiter().GetResult();
-                // If API is success and receive the response, then get the location details
-                if (httpResponse.IsSuccessStatusCode)
-                {
-                    var geolocationInfo = httpResponse.Content.ReadAsAsync<LocationDetails_IpApi>().GetAwaiter().GetResult();
-                    if (geolocationInfo != null)
-                    {
-                        Console.WriteLine("Country: " + geolocationInfo.country);
-                        Console.WriteLine("Region: " + geolocationInfo.regionName);
-                        Console.WriteLine("City: " + geolocationInfo.city);
-                        Console.WriteLine("Zip: " + geolocationInfo.zip);
-                        Console.ReadKey();
-                    }
-                }
-            }
+            
+        }
+        protected static string GetIPAddress()
+        {
+            String UserIP = new WebClient().DownloadString(@"http://icanhazip.com").Trim();
+            
+
+            return UserIP;
         }
     }
     public class LocationDetails_IpApi
