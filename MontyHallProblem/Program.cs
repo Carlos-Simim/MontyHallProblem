@@ -10,97 +10,40 @@ namespace MontyHallProblem
     {
         static void Main(string[] args)
         {
-            int vitorias = 0;
-            int derrotas = 0;
-            
-            Porta p1 = new Porta();
-            Porta p2 = new Porta();
-            Porta p3 = new Porta();
-            Porta escolha;
+            double vitorias = 0;
+            double derrotas = 0;
+            double winrate;
+            double loserate;
             Random r = new Random();
-            int sortearporta;
+            bool sortear;
+            int quantidade = 10000000;
 
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < quantidade; i++)
             {
-                p1 = new Porta();
-                p1.numero = 1;   
-                p2 = new Porta();
-                p2.numero = 2;
-                p3 = new Porta();
-                p3.numero = 3;
-                escolha = p1;
-                sortearporta = r.Next(1, 3); //Acho que ta com problema aqui
-                if(sortearporta == 1)
+                sortear = Porta.Sortear(r);
+                if (sortear == true)
                 {
-                    p1.carro = true;
-                    p1.cabra = false;
+                    vitorias = vitorias + 1;
                 }
-                if(sortearporta == 2)
+                if (sortear == false)
                 {
-                    p2.carro = true;
-                    p2.cabra = false;
+                    derrotas = derrotas + 1;
                 }
-                if(sortearporta == 3)
-                {
-                    p3.carro = true;
-                    p3.cabra = false;
-                }
-                
-
-
-                if (escolha == p1)
-                {
-                    if (p2.carro == true)
-                    {
-                        p3.estado = true;
-                    }
-                    if (p3.carro == true)
-                    {
-                        p2.estado = true;
-                    }
-
-                    if (p1.carro == true)
-                    {
-                        sortearporta = r.Next(2, 3);
-                        switch (sortearporta)
-                        {
-                            case 2:
-                                p2.estado = true;
-                                break;
-
-                            case 3:
-                                p3.estado = true;
-                                break;
-                        }
-                    }
-                }
-
-                if (escolha == p1)
-                {
-                    if(p2.estado == true)
-                    {
-                        escolha = p3;
-                    }
-                    if(p3.estado == true)
-                    {
-                        escolha = p2;
-                    }
-                }
-
-
-                Console.WriteLine("\ncarro de p1: " + p1.carro);
-                Console.WriteLine("carro de p2: " + p2.carro);
-                Console.WriteLine("carro de p3: " + p3.carro);
-
-                Console.WriteLine("Escolha final: " + escolha.numero);
-
-
-                
             }
+
+            winrate = Porta.getWinrate(vitorias, derrotas, true, quantidade);
+            loserate = Porta.getWinrate(vitorias, derrotas, false, quantidade);
+
+            Console.WriteLine("Vitórias: " + vitorias);
+            Console.WriteLine("Derrotas: " + derrotas);
+
+            Console.WriteLine("\nWinrate esperado no problema: 66.666%");
+            Console.WriteLine("Winrate obtido: " + winrate + "%");
+            
+            Console.WriteLine("\nLoserate esperado no problema: 33.333%");
+            Console.WriteLine("Loserate obtido: " + loserate + "%");
+
             Console.ReadLine();
-
-
-
 
         }
     }
