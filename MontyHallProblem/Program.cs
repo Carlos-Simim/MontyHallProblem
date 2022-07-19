@@ -24,25 +24,27 @@ namespace MontyHallProblem
 
             while (continuar == true)
             {
-                
-                
+
+
                 Console.WriteLine("==========MENU==========");
                 Console.WriteLine("|1 - Monty Hall Problem |");
                 Console.WriteLine("|2 - Coin Flip          |");
                 Console.WriteLine("|3 - Roulette           |");
-                Console.WriteLine("|4 - Sair               |");
+                Console.WriteLine("|4 - Mega-Sena          |");
+                Console.WriteLine("|5 - Sair               |");
                 Console.WriteLine("========================");
                 Console.Write("\nEscolha uma opção da lista acima: ");
                 input = Console.ReadLine();
                 
-                while(input != "1" && input != "2" && input != "3" && input != "4")
+                while(input != "1" && input != "2" && input != "3" && input != "4" && input != "5")
                 {
                     Console.Clear();
                     Console.WriteLine("==========MENU==========");
                     Console.WriteLine("|1 - Monty Hall Problem |");
                     Console.WriteLine("|2 - Coin Flip          |");
                     Console.WriteLine("|3 - Roulette           |");
-                    Console.WriteLine("|4 - Sair               |");
+                    Console.WriteLine("|4 - Mega-Sena          |");
+                    Console.WriteLine("|5 - Sair               |");
                     Console.WriteLine("========================");
                     if (contagemErros >= 3)
                     {
@@ -131,12 +133,17 @@ namespace MontyHallProblem
                 }
                 if (escolhaPrincipal == 4)
                 {
+                    Console.Clear();
+                    MegaSena.MegaMain();
+                }
+                if (escolhaPrincipal == 5)
+                {
                     continuar = false;
                 }
             }
             Console.WriteLine("\nPrograma finalizado! Obrigado por utilizá-lo ;)");
             Console.Write("\nAperte qualquer tecla para fechar a janela!");
-            Console.ReadLine();
+            Console.ReadKey();
         }
 
         protected static string GetIPAddress()

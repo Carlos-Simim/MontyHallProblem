@@ -66,7 +66,7 @@ namespace MontyHallProblem
             Console.WriteLine("==========================================");
 
             Console.WriteLine("Aperte qualquer tecla para continuar.");
-            Console.ReadLine();
+            Console.ReadKey();
             Console.Clear();
         }
 

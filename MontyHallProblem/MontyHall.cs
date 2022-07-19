@@ -73,7 +73,7 @@ namespace MontyHallProblem
             Console.WriteLine("|-Observação: A winrate está um pouco fora do esperado por erro no cálculo de vitória");
             Console.WriteLine("=====================================================================================");
             Console.WriteLine("Aperte qualquer tecla para continuar.");
-            Console.ReadLine();
+            Console.ReadKey();
             Console.Clear();
         }
 

@@ -64,7 +64,7 @@ namespace MontyHallProblem
             Console.WriteLine("|-Existe 50% de chance de cair cara      |");
             Console.WriteLine("==========================================");
             Console.WriteLine("Aperte qualquer tecla para continuar.");
-            Console.ReadLine();
+            Console.ReadKey();
             Console.Clear();
 
         }

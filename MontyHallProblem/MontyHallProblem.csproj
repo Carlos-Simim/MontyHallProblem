@@ -57,6 +57,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CoinFlip.cs" />
+    <Compile Include="MegaSena.cs" />
     <Compile Include="MontyHall.cs" />
     <Compile Include="Porta.cs" />
     <Compile Include="Program.cs" />
