@@ -61,49 +61,8 @@ namespace MontyHallProblem
 
                     if ((10 - contagemErros) <= 0)
                     {
-                        using (HttpClient httpClient = new HttpClient())
-                        {
-                            httpClient.DefaultRequestHeaders.Accept.Clear();
-                            httpClient.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
-                            // Pass API address to get the Geolocation details 
-                            httpClient.BaseAddress = new Uri(Ip_Api_Url);
-                            HttpResponseMessage httpResponse = httpClient.GetAsync(Ip_Api_Url).GetAwaiter().GetResult();
-                            // If API is success and receive the response, then get the location details
-                            if (httpResponse.IsSuccessStatusCode)
-                            {
-                                var geolocationInfo = httpResponse.Content.ReadAsAsync<LocationDetails_IpApi>().GetAwaiter().GetResult();
-                                if (geolocationInfo != null)
-                                {
-                                    //Console.Clear();
-                                    Console.WriteLine("\nEu avisei!!!!!!??!");
-                                    Thread.Sleep(2000);
-                                    Console.Write("Carregando: ");
-                                    for(int i = 0; i < 50; i++)
-                                    {
-                                        Console.Write("|");
-                                        Thread.Sleep(100);
-                                    }
-                                    Console.WriteLine("\n\nSeu país: " + geolocationInfo.country);
-                                    Thread.Sleep(1500);
-                                    Console.WriteLine("Seu estado: " + geolocationInfo.regionName);
-                                    Thread.Sleep(1500);
-                                    Console.WriteLine("Sua cidade: " + geolocationInfo.city);
-                                    Thread.Sleep(1500);
-                                    Console.WriteLine("Sua latitude: " + geolocationInfo.lat);
-                                    Thread.Sleep(1500);
-                                    Console.WriteLine("Sua longitude: " + geolocationInfo.lon);
-                                    Thread.Sleep(1500);
-                                    Console.WriteLine("Aqui pra vc _|_");
-                                    Console.WriteLine("=======================================");
-                                    Console.Write("\nPressione enter pra sair bobão");
-                                    Console.ReadLine();
-                                    fazerPalhacadinha();
-                                    Environment.Exit(0);
-
-                                }
-                            }
-                        }
-                        Console.ReadLine();
+                        Kill();
+                        
                     }
                     
                     
